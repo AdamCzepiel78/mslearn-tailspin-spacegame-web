@@ -54,13 +54,13 @@ steps:
     codeCoverageTool: cobertura
     summaryFileLocation: $(Build.SourcesDirectory)/**/coverage.cobertura.xml
 - task: DotNetCoreCLI@2
-displayName: Publish the project - $(buildConfiguration)
-inputs:
-  command: publish
-  projects: '**/*.csproj'
-  publishWebProjects: false
-  arguments: --no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)
-  zipAfterPublish: true
+  displayName: Publish the project - $(buildConfiguration)
+  inputs:
+    command: publish
+    projects: '**/*.csproj'
+    publishWebProjects: false
+    arguments: --no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)
+    zipAfterPublish: true
 - task: DotNetCoreCLI@2
   displayName: Run unit tests - $(buildConfiguration)
   inputs:
